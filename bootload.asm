@@ -22,19 +22,16 @@ start:
     mov     si, jatoe
     call    compare_strings
     cmp     ax, 0
-    jne     .exit
+    jne     .jatoe
 
     jmp     .repeat
 
-.exit:
+.jatoe:
     call    shutdown
     jmp     $
 
 
 shutdown:
-    mov     ax, 1000h
-    mov     ax, ss
-    mov     sp, 0F000h
     mov     ax, 5307h
     mov     bx, 0001h
     mov     cx, 0003h
