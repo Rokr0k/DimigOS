@@ -1,1 +1,12 @@
 *.bin
+*.dis
+*.o
+os-image.bin
+*.elf
+
+kernel/*.o
+boot/*.bin
+drivers/*.o
+boot/*.o
+cpu/*.o
+libc/*.o

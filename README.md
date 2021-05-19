@@ -7,3 +7,8 @@ Shutdown the computer.
 - `NASM`
 - `Make`
 - `qemu` (for debugging)
+## Build
+[Requires i386 crosscompiler](https://wiki.osdev.org/GCC_Cross-Compiler)
+```sh
+make
+```
