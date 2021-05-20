@@ -2,9 +2,9 @@ C_SOURCES = $(wildcard kernel/*.c drivers/*.c cpu/*.c libc/*.c)
 HEADERS = $(wildcard kernel/*.h drivers/*.h cpu/*.h libc/*.c)
 OBJ = $(C_SOURCES:.c=.o cpu/interrupt.o)
 
-CC = /home/rok/opt/cross/bin/i386-elf-gcc
-GDB = /home/rok/opt/cross/bin/i386-elf-gdb
-LD = /home/rok/opt/cross/bin/i386-elf-ld
+CC = ${HOME}/opt/cross/bin/i386-elf-gcc
+GDB = ${HOME}/opt/cross/bin/i386-elf-gdb
+LD = ${HOME}/opt/cross/bin/i386-elf-ld
 CFLAGS = -g -ffreestanding -Wall -Wextra -fno-exceptions -m32
 
 os-image.bin: boot/boot_sect.bin kernel.bin
@@ -24,7 +24,7 @@ debug: os-image.bin kernel.elf
 	${GDB} -ex "target remote localhost:1234" -ex "symbol-file $>"
 
 %.o: %.c ${HEADERS}
-	${CC} ${CFLAGS} -ffreestanding -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@
 
 %.o: %.asm
 	nasm $< -f elf -o $@
