@@ -7,6 +7,8 @@
 void kernel_main() {
     isr_install();
     irq_install();
+
+    clear_screen();
     
     kprint("Type \"jatoe\" to halt the CPU\n$ ");
 }

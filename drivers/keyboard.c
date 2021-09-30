@@ -59,7 +59,6 @@ static void keyboard_callback(registers_t *regs) {
             shift_state = 0;
         }
     }
-    ((uint8_t *)VIDEO_ADDRESS)[0] = shift_state + '0';
     UNUSED(regs);
 }
 

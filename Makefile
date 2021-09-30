@@ -3,7 +3,6 @@ HEADERS = $(wildcard kernel/*.h drivers/*.h cpu/*.h libc/*.c)
 OBJ = $(C_SOURCES:.c=.o cpu/interrupt.o)
 
 CC = ${HOME}/opt/cross/bin/i386-elf-gcc
-GDB = ${HOME}/opt/cross/bin/i386-elf-gdb
 LD = ${HOME}/opt/cross/bin/i386-elf-ld
 CFLAGS = -g -ffreestanding -Wall -Wextra -fno-exceptions -m32
 
@@ -18,10 +17,6 @@ kernel.elf: boot/kernel_entry.o ${OBJ}
 
 run: os-image.bin
 	qemu-system-i386 -fda os-image.bin
-
-debug: os-image.bin kernel.elf
-	qemu-system-i386 -s -fda $< &
-	${GDB} -ex "target remote localhost:1234" -ex "symbol-file $>"
 
 %.o: %.c ${HEADERS}
 	${CC} ${CFLAGS} -c $< -o $@
